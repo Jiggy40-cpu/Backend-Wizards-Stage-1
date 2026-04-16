@@ -37,11 +37,13 @@ app.use((err, req, res, next) => {
   res.status(500).json({ status: 'error', message: 'Internal server error' });
 });
 
-// Start server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+// For local development only
+if (require.main === module) {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}
 
 // Export for Vercel serverless function
 module.exports = app;
