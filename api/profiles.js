@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { v7: uuidv7 } = require('uuid');
+const { v4: uuidv4 } = require('uuid');
 const { fetchProfileData } = require('../lib/external-apis');
 const { getProfile, getAllProfiles, createProfile, deleteProfile, getProfileByName } = require('../lib/db');
 const { validateName, classifyAgeGroup } = require('../lib/validators');
@@ -36,7 +36,7 @@ router.post('/', async (req, res) => {
       });
     }
 
-    const id = uuidv7();
+    const id = uuidv4();
     const now = new Date().toISOString();
     const ageGroup = classifyAgeGroup(apiData.age);
 
