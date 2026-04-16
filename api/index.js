@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const profilesRouter = require('./profiles');
 const { initializeDb } = require('../lib/db');
